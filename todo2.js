@@ -11,6 +11,10 @@ const CHECK = "fa-check-circle";
 const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
 
+// Variables
+let LIST, id;
+
+
 // Show today's date
 const options = {weekday : "long" , month:"short",day:"numeric"};
 const today = new Date();
@@ -36,6 +40,7 @@ function addToDo(toDo, id, done, trash){
   list.insertAdjacentHTML(position,item);
 }
 
+
 // add an item to the list user the enter key
 document.addEventListener("keyup",function(even){
   if(event.keyCode == 13){
@@ -43,7 +48,16 @@ document.addEventListener("keyup",function(even){
 
        // if the input isn't empty
        if(toDo){
-         addToDo(toDo);
+         addToDo(toDo, id, false, false,);
+
+         LIST.push({
+           name : toDo,
+           id : id,
+           done : false,
+           trash : false,
+         });
+
+         id++;
        }
        input.value = "";
   }
