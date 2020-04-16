@@ -74,6 +74,25 @@ function completeToDo(element){
   LIST[element.id].done = LIST[element.id].done ? false : true;
 }
 
+// Remove To-Do Func
+function removeToDo(elements){
+  element.parentNode.parentNode.removeChild(element.parentNode);
+  
+  LIST[element.id].trash = true;
+}
+
+// Target the items created dynamically
+
+list.addEventListener("click", function(event){
+  const element = event.target; // return the clicked element inside the list
+  const elementJob = element.attributes.job.value; // complete or delete
+
+  if(elementJob == "complete"){
+    completeToDo(element);
+  }else if(elementJob == "delete"){
+    removeToDo(element);
+  }
+});
 
 addToDo("Work Hard", 1, true, false); // Calling Function for test
 addToDo("Sam's Production",1,false,false) // Calling Function for test
