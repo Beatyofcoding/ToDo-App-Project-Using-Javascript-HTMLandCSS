@@ -12,8 +12,8 @@ const UNCHECK = "fa-circle-thin";
 const LINE_THROUGH = "lineThrough";
 
 // Variables
-let LIST, id;
-
+let LIST = []
+, id = 0;
 
 // Show today's date
 const options = {weekday : "long" , month:"short",day:"numeric"};
@@ -24,7 +24,9 @@ dateElement.innerHTML = today.toLocaleDateString("en-US", options );
 // add to do function
 
 function addToDo(toDo, id, done, trash){
+  
   if(trash){ return; }
+  
   const DONE = done ? CHECK : UNCHECK;
   const LINE = done ? LINE_THROUGH : "";
 
@@ -39,7 +41,6 @@ function addToDo(toDo, id, done, trash){
 
   list.insertAdjacentHTML(position,item);
 }
-
 
 // add an item to the list user the enter key
 document.addEventListener("keyup",function(even){
@@ -62,6 +63,17 @@ document.addEventListener("keyup",function(even){
        input.value = "";
   }
 }); 
+
+
+// Complete To-Do Func
+function completeToDo(element){
+  element.classList.toggle(CHECK);
+  element.classList.toggle(UNCHECK)
+  element.parentNode.querySelector(".text").classList.toggle(LINE_THROUGH);
+
+  LIST[element.id].done = LIST[element.id].done ? false : true;
+}
+
 
 addToDo("Work Hard", 1, true, false);
 addToDo("Sam's Production",1,false,false)
