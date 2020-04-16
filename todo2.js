@@ -75,5 +75,5 @@ function completeToDo(element){
 }
 
 
-addToDo("Work Hard", 1, true, false);
-addToDo("Sam's Production",1,false,false)
+addToDo("Work Hard", 1, true, false); // Calling Function for test
+addToDo("Sam's Production",1,false,false) // Calling Function for test
